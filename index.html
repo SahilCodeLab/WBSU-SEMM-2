@@ -1,183 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sahil — Exam Q&A</title>
-<style>
-:root {
-  --bg: #1b1e23;
-  --text: #e6e0d8;
-  --muted: #a8b0b7;
-  --accent: #58c1aa;
-  --accent2: #6fb3e5;
-  --card-bg: #23272f;
-  --card-border: #333842;
-  --radius: 14px;
-  --shadow: 0 4px 14px rgba(0,0,0,0.25);
-  --heading-bg: #3b3f4b; /* soft dark highlight for headings */
-  --highlight: #ffd97d; /* soft golden highlight for search */
-}
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  line-height: 2;
-  padding: 0;
-  margin: 0;
-  font-size: 19px;
-}
-.container { max-width: 100%; padding: 1rem 2rem; box-sizing: border-box; }
-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 2rem; }
-header .brand { font-size: 2rem; font-weight: 900; color: var(--accent); margin-bottom: 0.3rem; letter-spacing: 1px; }
-header h1 { font-size: 1.8rem; font-weight: 700; color: var(--accent2); margin-bottom: 0.8rem; }
-header .name { font-size: 0.95rem; color: var(--muted); font-weight: 500; margin-bottom: 0.5rem; }
-header button { padding: 0.8rem 1.5rem; border-radius: var(--radius); background: var(--accent); color: var(--bg); font-weight: bold; border: none; cursor: pointer; }
-header button:hover { background: #6dd9c0; }
-
-.controls { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
-.controls input, .controls select { flex: 1; min-width: 200px; padding: 0.85rem 1.2rem; font-size: 1rem; border-radius: var(--radius); border: 1px solid var(--card-border); background: var(--card-bg); color: var(--text); }
-.controls input:focus, .controls select:focus { border-color: var(--accent); outline: none; }
-.count { padding: 0.85rem 1rem; color: var(--muted); }
-
-.grid { display: flex; flex-direction: column; gap: 1.5rem; }
-
-.question-answer-block {
-  background: var(--card-bg);
-  padding: 1.8rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--shadow);
-  width: 100%;
-  box-sizing: border-box;
-}
-.subject { font-weight: 700; color: var(--accent); margin-bottom: 0.4rem; }
-.question { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--accent2); }
-.answer { font-size: 1.05rem; color: var(--text); white-space: pre-wrap; word-wrap: break-word; padding: 0.5rem 0; }
-.highlight { background: var(--highlight); color: #000; padding: 0 2px; border-radius: 3px; }
-
-footer { margin-top: 3rem; text-align: center; font-size: 0.9rem; color: var(--muted); font-weight: 500; border-top: 1px solid #333842; padding: 1rem 0; }
-
-@media (max-width:768px) { body { font-size:18px; } .question { font-size:1.2rem; } .answer { font-size:1rem; } }
-@media (max-width:480px) { .container { padding: 1rem; } }
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sahil — Exam Q&A</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
-<header>
-  <div class="brand">SAHILCODELAB</div>
-  <h1>Exam Q&A</h1>
-  <div class="name">Powered by AI • SRGPT</div>
-  <button id="copyAll">Copy All Answers</button>
-</header>
+    <div class="app-container">
+        <header>
+            <div class="brand-group">
+                <div class="brand">SAHILCODELAB</div>
+                <div class="badge">AI POwerED</div>
+            </div>
+            <h1>Exam Q&A</h1>
+            <p class="subtitle">Smart Revision • Premium Edition</p>
+            <button id="copyAll" class="btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path
+                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                    <path
+                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                </svg>
+                Copy All Answers
+            </button>
+        </header>
 
-<div class="controls">
-  <input type="text" id="searchBox" placeholder="Search…">
-  <select id="subjectSelect"><option value="">All Subjects</option></select>
-  <div class="count" id="count">Loading…</div>
-</div>
+        <div class="controls-wrapper">
+            <div class="control-group">
+                <div class="input-wrapper">
+                    <svg class="icon-search" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                    <input type="text" id="searchBox" placeholder="Search questions...">
+                </div>
+                <div class="select-wrapper">
+                    <select id="subjectSelect">
+                        <option value="">All Subjects</option>
+                    </select>
+                    <div class="select-arrow"></div>
+                </div>
+            </div>
+            <div class="count-badge" id="count">Loading...</div>
+        </div>
 
-<div class="grid" id="grid"></div>
+        <div class="grid" id="grid"></div>
 
-<footer>© 2025 Sahil. All rights reserved.</footer>
-</div>
+        <footer>
+            <p>© 2025 Sahil. Designed with <span style="color:var(--accent-cyan)">♥</span> for clarity.</p>
+        </footer>
+    </div>
 
-<script>
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT4UrGAH6zVI_MOAtuuK1PFMkHItUS6Xo3xcux3qxhy-7iVwiqNnCEs4oGmxaF6-R4vya-Y-p3wpt1p/pub?gid=0&single=true&output=csv";
+    <script>
+        const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT4UrGAH6zVI_MOAtuuK1PFMkHItUS6Xo3xcux3qxhy-7iVwiqNnCEs4oGmxaF6-R4vya-Y-p3wpt1p/pub?gid=0&single=true&output=csv";
 
-async function loadCSV(url) {
-  const res = await fetch(url);
-  const text = await res.text();
-  const rows = [];
-  let currentRow = [], inQuoted = false, field = '';
-  for (let i=0;i<text.length;i++){
-    const c=text[i];
-    if(c=='"'){ inQuoted=!inQuoted; continue; }
-    if(!inQuoted && c=='\n'){ currentRow.push(field); rows.push(currentRow); currentRow=[]; field=''; continue; }
-    if(!inQuoted && c==','){ currentRow.push(field); field=''; continue; }
-    field+=c;
-  }
-  if(field) currentRow.push(field);
-  if(currentRow.length>0) rows.push(currentRow);
-  const headers = rows.shift().map(h=>h.trim());
-  return rows.map(r=>{ const obj={}; headers.forEach((h,i)=>obj[h]= (r[i]||"").trim()); return obj; });
-}
+        async function loadCSV(url) {
+            try {
+                const res = await fetch(url);
+                const text = await res.text();
+                const rows = [];
+                let currentRow = [], inQuoted = false, field = '';
+                for (let i = 0; i < text.length; i++) {
+                    const c = text[i];
+                    if (c == '"') { inQuoted = !inQuoted; continue; }
+                    if (!inQuoted && c == '\n') { currentRow.push(field); rows.push(currentRow); currentRow = []; field = ''; continue; }
+                    if (!inQuoted && c == ',') { currentRow.push(field); field = ''; continue; }
+                    field += c;
+                }
+                if (field) currentRow.push(field);
+                if (currentRow.length > 0) rows.push(currentRow);
+                const headers = rows.shift().map(h => h.trim());
+                return rows.map(r => { const obj = {}; headers.forEach((h, i) => obj[h] = (r[i] || "").trim()); return obj; });
+            } catch (e) {
+                console.error("Failed to load CSV", e);
+                return [];
+            }
+        }
 
-function sanitizeText(text, search="") {
-  let lines = text.split(/\r?\n/).map(l => l.trim());
+        function sanitizeText(text, search = "") {
+            let lines = text.split(/\r?\n/).map(l => l.trim());
 
-  lines = lines.map(line => {
-    if (!line) return "";
+            lines = lines.map(line => {
+                if (!line) return "";
 
-    // Full capital line detection
-    if(/^[A-Z\s\d\-\*\(\)]+:$/.test(line) || /^[A-Z\s\d\-\*\(\)]+$/.test(line)) {
-      line = `<strong style="background-color: var(--heading-bg); padding: 2px 6px; border-radius: 4px;">${line}</strong>`;
-    } 
-    // Numbered heading with dots or slashes, optional colon
-    else if(/^[0-9]+([\.\/][0-9]+)*\.\s?.*?:/.test(line)){
-      // Highlight number + heading up to colon
-      line = line.replace(/^([0-9]+([\.\/][0-9]+)*\.\s?.*?:)/, `<strong style="background-color: var(--heading-bg); padding:2px 6px; border-radius:4px;">$1</strong>`);
-    }
+                // Full capital line detection
+                if (/^[A-Z\s\d\-\*\(\)]+:$/.test(line) || /^[A-Z\s\d\-\*\(\)]+$/.test(line)) {
+                    line = `<strong class="heading-highlight">${line}</strong>`;
+                }
+                // Numbered heading
+                else if (/^[0-9]+([\.\/][0-9]+)*\.\s?.*?:/.test(line)) {
+                    line = line.replace(/^([0-9]+([\.\/][0-9]+)*\.\s?.*?:)/, `<strong class="heading-highlight">$1</strong>`);
+                }
 
-    // Search highlighting
-    if(search){
-      const regex = new RegExp(`(${search})`, "gi");
-      line = line.replace(regex, '<span class="highlight">$1</span>');
-    }
+                // Search highlighting
+                if (search) {
+                    const regex = new RegExp(`(${search})`, "gi");
+                    line = line.replace(regex, '<span class="search-highlight">$1</span>');
+                }
 
-    return line;
-  });
+                return line;
+            });
 
-  return lines.join('<br>');
-}
+            return lines.join('<br>');
+        }
 
-const state={all:[],filtered:[]};
-const grid=document.getElementById("grid");
-const searchBox=document.getElementById("searchBox");
-const subjectSelect=document.getElementById("subjectSelect");
-const countEl=document.getElementById("count");
-const copyBtn=document.getElementById("copyAll");
+        const state = { all: [], filtered: [] };
+        const grid = document.getElementById("grid");
+        const searchBox = document.getElementById("searchBox");
+        const subjectSelect = document.getElementById("subjectSelect");
+        const countEl = document.getElementById("count");
+        const copyBtn = document.getElementById("copyAll");
 
-function render(list){
-  grid.innerHTML=list.map(item=>`
-    <div class="question-answer-block">
-      ${item.Subject?`<div class="subject">${item.Subject}</div>`:""}
-      <div class="question">${item.Question} ${item.Marks?`(${item.Marks} marks)`:""}</div>
-      <div class="answer">${sanitizeText(item.Answer, searchBox.value)}</div>
+        function render(list) {
+            if (list.length === 0) {
+                grid.innerHTML = `<div class="empty-state">No questions found matching your criteria.</div>`;
+                countEl.textContent = "0 results";
+                return;
+            }
+            grid.innerHTML = list.map(item => `
+    <div class="card">
+        <div class="card-header">
+            ${item.Subject ? `<span class="tag tag-subject">${item.Subject}</span>` : ""}
+            ${item.Marks ? `<span class="tag tag-marks">${item.Marks} Marks</span>` : ""}
+        </div>
+        <h3 class="question">${item.Question}</h3>
+        <div class="answer">${sanitizeText(item.Answer, searchBox.value)}</div>
     </div>
   `).join("");
-  countEl.textContent=`${list.length} of ${state.all.length}`;
-}
+            countEl.textContent = `Showing ${list.length} of ${state.all.length}`;
+        }
 
-function applyFilter(){
-  const q=searchBox.value.toLowerCase();
-  const s=subjectSelect.value;
-  state.filtered=state.all.filter(item=>{
-    const matchSubj=!s||item.Subject===s;
-    const blob=(item.Subject+" "+item.Question+" "+item.Answer).toLowerCase();
-    const matchSearch=!q||blob.includes(q);
-    return matchSubj&&matchSearch;
-  });
-  render(state.filtered);
-}
+        function applyFilter() {
+            const q = searchBox.value.toLowerCase();
+            const s = subjectSelect.value;
+            state.filtered = state.all.filter(item => {
+                const matchSubj = !s || item.Subject === s;
+                const blob = (item.Subject + " " + item.Question + " " + item.Answer).toLowerCase();
+                const matchSearch = !q || blob.includes(q);
+                return matchSubj && matchSearch;
+            });
+            render(state.filtered);
+        }
 
-copyBtn.addEventListener("click",()=>{
-  const text=state.filtered.map(i=>`Q: ${i.Question}\nA: ${i.Answer.replace(/<br>/g,'\n')}`).join("\n\n");
-  navigator.clipboard.writeText(text);
-  copyBtn.textContent="Copied!";
-  setTimeout(()=>copyBtn.textContent="Copy All Answers",1000);
-});
+        copyBtn.addEventListener("click", () => {
+            const text = state.filtered.map(i => `Q: ${i.Question}\nA: ${i.Answer.replace(/<br>/g, '\n')}`).join("\n\n");
+            navigator.clipboard.writeText(text);
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = `<span>Copied!</span>`;
+            copyBtn.classList.add('success');
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+                copyBtn.classList.remove('success');
+            }, 2000);
+        });
 
-searchBox.addEventListener("input",applyFilter);
-subjectSelect.addEventListener("change",applyFilter);
+        searchBox.addEventListener("input", applyFilter);
+        subjectSelect.addEventListener("change", applyFilter);
 
-(async ()=>{
-  state.all=await loadCSV(CSV_URL);
-  const subs=[...new Set(state.all.map(i=>i.Subject).filter(s=>s))].sort();
-  subs.forEach(s=>subjectSelect.appendChild(new Option(s,s)));
-  applyFilter();
-})();
-</script>
+        (async () => {
+            state.all = await loadCSV(CSV_URL);
+            const subs = [...new Set(state.all.map(i => i.Subject).filter(s => s))].sort();
+            subs.forEach(s => subjectSelect.appendChild(new Option(s, s)));
+            applyFilter();
+        })();
+    </script>
 </body>
+
 </html>
